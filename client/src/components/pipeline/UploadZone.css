@@ -1,0 +1,113 @@
+/* UploadZone — multi-file styles */
+.upload-zone-wrapper { padding: var(--space-4); }
+.upload-title { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: var(--space-3); }
+
+/* ── Uploaded docs list ─────────────────────────────────────── */
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.doc-list::-webkit-scrollbar { width: 4px; }
+.doc-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: hsla(140, 70%, 55%, 0.07);
+  border: 1px solid hsla(140, 70%, 55%, 0.18);
+  border-radius: var(--r-md);
+  animation: fadeIn var(--dur-base) var(--ease);
+  transition: background var(--dur-fast) var(--ease);
+}
+.doc-item:hover { background: hsla(140, 70%, 55%, 0.12); }
+
+.doc-item-icon { font-size: 1rem; flex-shrink: 0; }
+.doc-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.doc-item-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doc-item-meta { opacity: 0.75; }
+
+.doc-remove-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: var(--r-sm);
+  transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.doc-remove-btn:hover {
+  color: #f87171;
+  background: hsla(0, 90%, 65%, 0.12);
+}
+
+/* ── Currently ingesting ──────────────────────────────────────── */
+.doc-ingesting {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-3);
+  background: hsla(258, 90%, 68%, 0.07);
+  border: 1px solid hsla(258, 90%, 68%, 0.18);
+  border-radius: var(--r-md);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.spinner-sm {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Drop zone ───────────────────────────────────────────────── */
+.upload-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: 2px dashed var(--border);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease);
+  min-height: 110px;
+}
+.upload-drop:hover:not(.disabled) {
+  border-color: var(--accent);
+  background: hsla(258, 90%, 68%, 0.06);
+}
+.upload-drop.dragging {
+  border-color: var(--accent);
+  background: hsla(258, 90%, 68%, 0.12);
+  transform: scale(1.01);
+  box-shadow: var(--shadow-glow);
+}
+.upload-drop.disabled { opacity: 0.5; cursor: not-allowed; }
+.upload-icon { font-size: 1.75rem; }
+.upload-hint { font-size: 0.82rem; color: var(--text-secondary); text-align: center; }
+.upload-sub { text-align: center; }

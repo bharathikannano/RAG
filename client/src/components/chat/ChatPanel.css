@@ -1,0 +1,128 @@
+/* ChatPanel — conversation bubble styles */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  flex: 1;
+  min-height: 0; /* allow flex child to scroll */
+}
+
+/* ── Empty states ───────────────────────────────────────────── */
+.no-index-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-7);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── History control bar ─────────────────────────────────────── */
+.history-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-elevated);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Conversation thread ─────────────────────────────────────── */
+.conversation-thread {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-right: var(--space-2);
+  min-height: 80px;
+  max-height: 520px;
+}
+.conversation-thread::-webkit-scrollbar { width: 4px; }
+.conversation-thread::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+/* ── Turns ───────────────────────────────────────────────────── */
+.turn { display: flex; flex-direction: column; gap: var(--space-3); }
+.turn--live .msg-bubble--user { border-color: hsla(258, 90%, 68%, 0.35); }
+
+/* ── Message rows ────────────────────────────────────────────── */
+.msg-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+  animation: fadeIn var(--dur-base) var(--ease);
+}
+.msg-row--user  { flex-direction: row-reverse; }
+.msg-row--assistant { flex-direction: row; }
+
+/* ── Avatars ─────────────────────────────────────────────────── */
+.msg-avatar { font-size: 1.1rem; flex-shrink: 0; padding-bottom: 2px; }
+.msg-avatar--user      {}
+.msg-avatar--assistant {}
+
+/* ── Bubbles ─────────────────────────────────────────────────── */
+.msg-bubble {
+  max-width: 82%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--r-lg);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  word-break: break-word;
+  animation: slideIn var(--dur-base) var(--ease);
+}
+
+.msg-bubble--user {
+  background: hsla(258, 90%, 68%, 0.15);
+  border: 1px solid hsla(258, 90%, 68%, 0.25);
+  color: var(--text-primary);
+  border-bottom-right-radius: var(--r-sm);
+}
+
+.msg-bubble--assistant {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-bottom-left-radius: var(--r-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.msg-bubble--error {
+  background: hsla(0, 70%, 45%, 0.12);
+  border-color: hsla(0, 70%, 55%, 0.25);
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.msg-content { white-space: pre-wrap; }
+
+/* ── Input form ──────────────────────────────────────────────── */
+.chat-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.chat-input-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+}
+.chat-textarea {
+  flex: 1;
+  resize: none;
+  min-height: 60px;
+  max-height: 180px;
+}
+.chat-hint { text-align: right; }
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

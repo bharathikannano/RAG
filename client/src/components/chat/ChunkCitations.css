@@ -1,0 +1,29 @@
+.citations-panel { display: flex; flex-direction: column; gap: var(--space-2); }
+.citations-title { margin-bottom: var(--space-1); }
+.citations-list { display: flex; flex-direction: column; gap: var(--space-2); }
+.citation-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+  overflow: hidden;
+}
+.citation-item:hover { border-color: var(--border-bright); }
+.citation-item.expanded { border-color: hsla(258,90%,68%,0.35); }
+.citation-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+}
+.citation-filename { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.citation-toggle { color: var(--text-muted); font-size: 0.7rem; }
+.citation-text {
+  padding: 0 var(--space-3) var(--space-3);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-2);
+}
